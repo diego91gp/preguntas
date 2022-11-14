@@ -409,7 +409,7 @@ var test = [
             },
             {
                 "tipo": "simple",
-                "pregunta": "¿En qué olimpiadas ganó la tenista Serena Williams su primer oro olímpico en individuales?",
+                "pregunta": "¿En qué olimpiadas ganó  Serena Williams su primer oro olímpico en individuales?",
                 "respuestas": [
                     {
                         "respuesta": "Barcelona 92",

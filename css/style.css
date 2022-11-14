@@ -6,41 +6,42 @@
 
 body {
     font-family: 'Roboto Mono', monospace;
-   background-color: #90a9b4;
-    
- 
+    background-color: #90a9b4;
     width: 100%;
-    min-width: 637px;
-
+    min-width: 739px;
+    user-select: none; 
 }
 
+header div {
+    
+    width: 500px;
+    height: 150px;
+}
+
+
 header {
-    align-items: center;
+    display: flex;
+    justify-content: center;
     min-width: 637px;
-  position:fixed;
-  top:0px;
-  width: 100%;;
-    display:flex;
-    justify-content: flex-end;
-    height: 110px;
+    width: 100%;
+    height: 150px;
     background-image: url(../media/Sin\ nombre.png);
-    background-position:left;
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: 350px;
-    background-color:#2c3d4da9;
-    border-bottom: solid black;
+    background-size: contain;
+    position: fixed;
+    top: 0;
     backdrop-filter: blur(9px);
     z-index: 1;
-    
+
 }
 
 nav {
 
-    height: 50px;
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: calc(50% - 50px);
+    top: 150px;;
     left: -150px;
     justify-content: center;
     gap: 10px;
@@ -49,14 +50,15 @@ nav {
 }
 
 nav div {
+    border-radius: 15px;
     position: relative;
     display: flex;
-    width: 200px;
+    width: 230px;
     color: white;
     justify-content: right;
     align-items: center;
     text-transform: uppercase;
-    background-color: rgb(161, 15, 27);
+    background-color: #1778A1;
     cursor: pointer;
     left: 0;
     transition: left .5s;
@@ -66,81 +68,70 @@ nav div {
 }
 
 nav div:hover {
-    cursor: pointer;
     left: 120px;
 }
 
 
-
-
-
 nav img {
-
     text-align: center;
-
-    width: 50px;
+    width: 80px;
 }
 
 h1 {
+    margin: 0 auto;
+    width: 90%;
+    border-bottom: solid #0f0f0f;
+    text-align: center;
     font-family: 'Chewy';
     -webkit-text-stroke: 1px #20111b;
-    padding-right: 3%;
-    font-size: calc(2em + 2vw);
-    color: #409E68;
+    font-size: calc(1.5em + 2vw);
+    color: #1778A1;
     text-transform: uppercase;
-    
    
-    
-
 }
 
 .cuestionario {
     margin: 0 auto;
+    color: #e7ebec;
     margin-top: 200px;
-    width: 60%;
+    width: 80%;
     display: flex;
-    gap: 20px;
+    justify-content: center;
+    gap: 50px;
     flex-direction: column;
+    padding-bottom:40px;
 
 }
 
 
 
+article h3 {
+    
+    padding: 3%;
+    text-align: center;
+    text-shadow: 2px 2px 1px rgb(15, 15, 15);
+    border-bottom: solid #0f0f0f;
+    background-color: #1778a1;
+    width: 100%;
+    border-top-left-radius: 67px;
+    border-top-right-radius: 67px;
+    font-size: calc(0.7em + 0.4vw);
+    line-height: 25px;
+}
 
 article {
-
-    padding-bottom: 20px;
-    width: 100%;
-    display: flex;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.993);
     margin: 0 auto;
-    margin-bottom: 10px;
+    width: 70%;
+    display: flex;
     gap: 20px;
     padding-bottom: 40px;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(9px);
-    border-radius: 10px;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
+    border-radius: 70px;
     border: solid black;
-
-
-}
-
-article h3 {
-    text-shadow: 2px 2px 1px rgb(15, 15, 15);
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    text-align: center;
-    border-bottom: solid #0f0f0f;
-    color: #e7ebec;
-    background-color: #1778a1;
-    width: 100%;
-
 }
 
 article div {
@@ -148,13 +139,9 @@ article div {
     display: flex;
     flex-wrap: wrap;
     flex-grow: 1;
-
     padding: 10px 40px;
     height: 60px;
     justify-content: center;
-    align-items: center;
-
-
 }
 
 article input[type=radio] {
@@ -163,21 +150,14 @@ article input[type=radio] {
 
 article label {
     text-shadow: 2px 2px 1px rgb(15, 15, 15);
-
-    justify-content: center;
-    align-items: center;
-    border: solid black;
     display: flex;
-    margin: 4px;
-    padding: 8px;
+    justify-content: center;
+    align-items: center;;
     background: #36484d;
-    color:white;
     height: 50px;
     flex-basis: 500px;
     cursor: pointer;
     border-radius: 5px;
-    text-align: center;
-
 }
 
 article label:hover {
@@ -188,12 +168,14 @@ article label:hover {
 article input[type=radio]:checked+label,
 input[type=checkbox]:checked+label {
     background: #FDC300;
-
     box-shadow: 0px 0px 16px 7px rgba(0, 0, 0, 0.75);
 }
 
 button {
-
+    
+    color: white;
+    border-radius: 30px;
+    background-color: #36484d;
     display: block;
     margin: 0 auto;
     width: 150px;
@@ -202,9 +184,35 @@ button {
     margin-top: 50px;
     cursor: pointer;
 }
-@media (max-width: 1000px) {
-    h1{
-        font-size: calc(1.2em + 1vw);
 
-    }
+button:hover{
+    background-color: initial;
+  background-position: 0 0;
+  
+    background-color: #FDC300;
 }
+button:active {
+    opacity: .8;
+  }
+
+.resultados{
+    text-shadow: 2px 2px 1px rgb(15, 15, 15);
+    color:white;
+    width: 50%;
+    text-align: center;
+margin: 0 auto;
+border:solid black;
+justify-self: center;
+position: relative;
+top:170px;
+background-image: url(../media/WC268-True-of-False-1.png);
+background-size: contain;
+
+}
+.resultados h3{
+    background-color: blue;
+}
+
+
+
+
