@@ -1,11 +1,11 @@
-import {test} from "./test.js";
+import { test } from "./test.js";
 window.onload = function () {
 
-  
+
 
     var nav = document.querySelector("nav");
     var sec = document.querySelector(".cuestionario");
-    
+
     creaNav();
     function creaNav() {
         for (let categoria of test) {
@@ -19,49 +19,49 @@ window.onload = function () {
             div.appendChild(imag);
             nav.appendChild(div);
             div.addEventListener("click", opcion);
-    
+
         }
     }
     function opcion() {
-        
-        if ( document.querySelector(".resultados"))document.querySelector(".resultados").remove();
+
+        if (document.querySelector(".resultados")) document.querySelector(".resultados").remove();
         let h1 = document.createElement("h1");
         let imag = document.createElement("img");
-        h1.textContent ="¿Cuanto sabes de "+this.textContent+"?";
+        h1.textContent = "¿Cuanto sabes de " + this.textContent + "?";
         sec.innerHTML = "";
         sec.appendChild(h1);
         pintaNav();
         this.style.backgroundColor = "#FDC300";
         for (const cat of test) {
-            
+
             if (cat.categoria == this.textContent) {
-                
-                imag.src=
-                imag.src = `./media/${cat.imagen}`;
+
+                imag.src =
+                    imag.src = `./media/${cat.imagen}`;
                 //h1.appendChild(imag);
-                for (const [indice,preg] of cat.preguntas.entries()) {
+                for (const [indice, preg] of cat.preguntas.entries()) {
                     let artic = document.createElement("article");
                     artic.style.backgroundImage = `url("./media/${cat.fondo}")`;
                     sec.appendChild(artic);
                     let h3 = document.createElement("h3");
-                    h3.textContent = (indice+1) + ". " + preg.pregunta;
+                    h3.textContent = (indice + 1) + ". " + preg.pregunta;
                     artic.appendChild(h3);
-                    
-                    
+
+
                     creaInputs(preg, indice, artic);
-                    
+
                 }
                 creaBoton();
             }
-            
+
         }
 
 
-       
-        
-        
+
+
+
     }
-    
+    //checked
     function creaInputs(preg, indice, artic) {
         for (const [indiR, resp] of preg.respuestas.entries()) {
 
@@ -83,70 +83,92 @@ window.onload = function () {
         }
     }
 
-    function creaBoton(){
-        
+    function creaBoton() {
+
         if (!document.body.contains(document.getElementById("bot"))) {
             let boton = document.createElement("button");
-            boton.setAttribute("id","bot")
+            boton.setAttribute("id", "bot")
             let resultados = document.createElement("div");
             boton.addEventListener("click", compruebaChek);
             boton.textContent = "Comprueba";
             resultados.appendChild(boton);
             document.body.appendChild(resultados);
-        } 
+        }
 
     }
 
-    
-    
+
+    //funcion para repetir las qué falle
     function compruebaChek() {
 
-        let correcta=0;
-        let incorrecta=0;
-        let nota=0;
-        for (let chek of document.querySelectorAll("input")){
-          
-            if (chek.value&&chek.checked) {
-                chek.nextElementSibling.style.backgroundColor = "#4EBF7D";
-                correcta++;
-                nota=nota+1;
 
-                // chek.checked.nextElementSibling.style.backgroundColor = "#4EBF7D";   
+
+
+
+
+
+        let correcta = 0;
+        let incorrecta = 0;
+        let nota=0;
+        for (let ar of sec.querySelectorAll("article")) {
+            let notasum = 0;
+            let notares=0;
+            let cont = 0;
+            for (let chek of ar.querySelectorAll("input")) {
+               
+                if (chek.value && chek.checked) {
+                    cont++;
+                    chek.nextElementSibling.style.backgroundColor = "#4EBF7D";
+                    correcta++;
+                    notasum = notasum + 1;
+                    chek.nextElementSibling.innerHTML += `<img src="./media/comprobar.png" width="30px">`;
+
+                    // chek.checked.nextElementSibling.style.backgroundColor = "#4EBF7D";   
+                }
+                if (!chek.value && chek.checked) {
+                    incorrecta++;
+                    notares++;
+                    chek.nextElementSibling.style.backgroundColor = "#DD401F";
+                    chek.nextElementSibling.innerHTML += `<img src="./media/cancelar.png" width="30px">`;
+                }
+                if (chek.value && !chek.checked){
+                    chek.nextElementSibling.style.backgroundColor = "green";
+                    cont++;
+                    
+                } 
+                    
+
             }
-            if(!chek.value && chek.checked){
-                incorrecta++;
-                nota=nota-0.25;
-                chek.nextElementSibling.style.backgroundColor =  "red";
-            }
-            if(chek.value && !chek.checked)chek.nextElementSibling.style.backgroundColor =  "green";
-            
-                
+            notasum=notasum/cont;
+            notares=(0.25/cont)*notares;
+            nota=(nota+notasum)-notares;
+          
         }
-        window.location.href = '#top';    
+        window.scroll(0, 0);
         notas(correcta, incorrecta, nota);
-        
+
     }
-    
+   
     function notas(correcta, incorrecta, nota) {
         let divresult = document.createElement("div");
         divresult.classList.add("resultados");
         divresult.innerHTML = `<h3>Resultados</h3>
         <span> Acertadas =${correcta} <br>
         Incorrectas=${incorrecta} <br>
-        Nota=${nota} </span> `;
+        Nota=${nota.toFixed(2)} </span> `;
         document.querySelector("button").remove();
-        if (nota!=10) {
-            divresult.innerHTML+=`<button>Volver  a intentar</button>`;
+        if (nota != 10) {
+            divresult.innerHTML += `<button>Volver  a intentar</button>`;
         }
 
         document.body.insertBefore(divresult, sec);
     }
 
-    function pintaNav(){
+    function pintaNav() {
         for (const i of nav.children) {
             i.style.backgroundColor = " #1778A1";
         }
-    }  
+    }
 
 
 }
