@@ -48,12 +48,15 @@ window.onload = function () {
                     imag.src = `./media/${cat.imagen}`;
                 h1.appendChild(imag);
                 for (const [indice, preg] of cat.preguntas.entries()) {
+                    let imagenTipo= document.createElement("img");
+                    imagenTipo.src=preg.tipo=="simple"? "./media/mascotaUnica.png" : "./media/mascotaMultiple.png" ;
                     let artic = document.createElement("article");
                     artic.style.backgroundImage = `url("./media/${cat.fondo}")`;
                     sec.appendChild(artic);
                     let h3 = document.createElement("h3");
                     h3.textContent = (indice + 1) + ". " + preg.pregunta;
                     artic.appendChild(h3);
+                    h3.appendChild(imagenTipo);
                     
                     creaInputs(preg, indice, artic);
 
@@ -73,9 +76,11 @@ window.onload = function () {
         for (const [indiR, resp] of preg.respuestas.entries()) {
 
             let div = document.createElement("div");
+           
             div.classList.add("opcion");
             let input = document.createElement("input");
             input.type = preg.tipo == "simple" ? "radio" : "checkbox";
+
             input.value = resp.correcta;
             input.name = "res" + indice;
             input.id = "res" + indice + "" + indiR;
