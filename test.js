@@ -1,7 +1,7 @@
 var test = [
         {
             "fondo": "fondogeo.png",
-            "imagen": "geo.png",
+            "imagen": "mascotageo.png",
             "categoria": "geografia",
             "preguntas": [
                 {
@@ -228,7 +228,7 @@ var test = [
         },/*hasta aqui 1*/
         {
             "fondo": "fondodep.webp",
-            "imagen": "dep.png",
+            "imagen": "mascotadep.png",
             "categoria": "deporte",
             "preguntas": [{
                 "tipo": "simple",

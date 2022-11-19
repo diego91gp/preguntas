@@ -1,12 +1,18 @@
 import { test } from "./test.js";
 window.onload = function () {
 
-
-
+    let main= document.querySelector(".info");
+    main.parentElement.previousElementSibling.previousElementSibling.firstElementChild.addEventListener("click",principal);
     var nav = document.querySelector("nav");
     var sec = document.querySelector(".cuestionario");
 
     creaNav();
+
+    function principal(){
+        sec.innerHTML="";
+        sec.appendChild(main);
+
+    }
     function creaNav() {
         for (let categoria of test) {
             let div = document.createElement("div");
@@ -19,6 +25,8 @@ window.onload = function () {
             div.appendChild(imag);
             nav.appendChild(div);
             div.addEventListener("click", opcion);
+
+           
 
         }
     }
@@ -35,10 +43,10 @@ window.onload = function () {
         for (const cat of test) {
 
             if (cat.categoria == this.textContent) {
-
-                imag.src =
+                
+                
                     imag.src = `./media/${cat.imagen}`;
-                //h1.appendChild(imag);
+                h1.appendChild(imag);
                 for (const [indice, preg] of cat.preguntas.entries()) {
                     let artic = document.createElement("article");
                     artic.style.backgroundImage = `url("./media/${cat.fondo}")`;
@@ -46,8 +54,7 @@ window.onload = function () {
                     let h3 = document.createElement("h3");
                     h3.textContent = (indice + 1) + ". " + preg.pregunta;
                     artic.appendChild(h3);
-
-
+                    
                     creaInputs(preg, indice, artic);
 
                 }
@@ -92,7 +99,7 @@ window.onload = function () {
             boton.addEventListener("click", compruebaChek);
             boton.textContent = "Comprueba";
             resultados.appendChild(boton);
-            document.body.appendChild(resultados);
+           sec.appendChild(resultados);
         }
 
     }
@@ -100,63 +107,67 @@ window.onload = function () {
 
     //funcion para repetir las qué falle
     function compruebaChek() {
+        let correcta = 0, incorrecta = 0, nota = 0;
 
-
-
-
-
-
-
-        let correcta = 0;
-        let incorrecta = 0;
-        let nota=0;
         for (let ar of sec.querySelectorAll("article")) {
-            let notasum = 0;
-            let notares=0;
-            let cont = 0;
+            let arr = [];
+            let notaSuma = 0, notaResta = 0;
             for (let chek of ar.querySelectorAll("input")) {
-               
+
                 if (chek.value && chek.checked) {
-                    cont++;
+                    arr.push({ "tipo": "correcta", "sel": "bien" });
+
                     chek.nextElementSibling.style.backgroundColor = "#4EBF7D";
-                    correcta++;
-                    notasum = notasum + 1;
+                    notaSuma++;
                     chek.nextElementSibling.innerHTML += `<img src="./media/comprobar.png" width="30px">`;
 
                     // chek.checked.nextElementSibling.style.backgroundColor = "#4EBF7D";   
                 }
                 if (!chek.value && chek.checked) {
                     incorrecta++;
-                    notares++;
+                    arr.push({ "tipo": "incorrecta", "sel": "mal" });
+                    notaResta = notaResta + 0.15;
                     chek.nextElementSibling.style.backgroundColor = "#DD401F";
                     chek.nextElementSibling.innerHTML += `<img src="./media/cancelar.png" width="30px">`;
                 }
-                if (chek.value && !chek.checked){
+                if (chek.value && !chek.checked) {
+                    arr.push({ "tipo": "correcta" });
                     chek.nextElementSibling.style.backgroundColor = "green";
-                    cont++;
-                    
-                } 
-                    
+
+
+                }
+
 
             }
-            notasum=notasum/cont;
-            notares=(0.25/cont)*notares;
-            nota=(nota+notasum)-notares;
-          
+            let y = arr.filter(arr => arr.tipo === 'correcta').length;
+            let x = arr.filter(arr => arr.sel === 'bien').length;
+
+            //a medias
+            //if(arr.every)
+            notaSuma = notaSuma / y;
+            correcta = notaSuma == 1 ? correcta + 1 : correcta + 0;
+            //if(notaSuma==1) correcta++;
+            nota = (nota + notaSuma) - notaResta;
+
         }
         window.scroll(0, 0);
-        notas(correcta, incorrecta, nota);
+        pintaNotas(correcta, incorrecta, nota);
 
     }
-   
-    function notas(correcta, incorrecta, nota) {
+
+    function pintaNotas(correcta, incorrecta, nota) {
+
         let divresult = document.createElement("div");
+
         divresult.classList.add("resultados");
+
         divresult.innerHTML = `<h3>Resultados</h3>
-        <span> Acertadas =${correcta} <br>
-        Incorrectas=${incorrecta} <br>
-        Nota=${nota.toFixed(2)} </span> `;
+                               <span> Aciertos = ${correcta} <br>
+                                Fallos = ${incorrecta} <br>
+                                Nota=${nota.toFixed(2)} </span> `;
+
         document.querySelector("button").remove();
+
         if (nota != 10) {
             divresult.innerHTML += `<button>Volver  a intentar</button>`;
         }
