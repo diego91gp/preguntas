@@ -54,12 +54,13 @@ nav {
     z-index: 1;
 
 }
-.info{
+
+.info {
     font-size: calc(0.7em + 0.4vw);
     box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.993);
     backdrop-filter: blur(10px);
     text-align: center;
-    display:flex;
+    display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
@@ -67,35 +68,39 @@ nav {
     background-size: cover;
     border-radius: 10%;
     width: 60%;
-   
-    gap:10px;
-}
- #flecha{
-    max-width: 100%;
- }
 
-.instru{
+    gap: 10px;
+}
+
+#flecha {
+    max-width: 100%;
+}
+
+.instru {
     background-color: #1778a1b4;
     backdrop-filter: blur(15px);
-    color:black;
-    text-align:justify;
+    color: black;
+    text-align: justify;
     margin-top: 20px;
-   
+
     width: 80%;
-   
+
 }
-h1 img{
+
+h1 img {
     width: 10%;
     margin-left: 2%;
-    
+
+
 }
-article section img{
+
+article section img {
     position: absolute;
-    right: 20px;
+    right: 0px;
     max-width: 20%;
-   
-    
-    
+
+
+
 }
 
 nav div {
@@ -125,12 +130,12 @@ nav img {
     margin-left: 5px;
     text-align: center;
     width: 35%;
-    
+
 }
 
 h1 {
-    align-items:center;
-    display:flex;
+    align-items: center;
+    display: flex;
     justify-content: center;
     margin: 0 auto;
     width: 90%;
@@ -143,9 +148,10 @@ h1 {
     text-transform: uppercase;
 
 }
-h3{
-    font-size: calc(0.5em + 0.9vw); 
-    padding:2%;
+
+h3 {
+    font-size: calc(0.8em + 0.9vw);
+    color: #ecd866
 }
 
 .cuestionario {
@@ -164,22 +170,22 @@ h3{
 
 
 
-article section  {
+article section {
     padding-right: 20%;
-   display:flex;
-   justify-content: center;
-   position:relative;
-   height: 100px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    height: 100px;
     align-items: center;
     text-align: center;
     text-shadow: 2px 2px 1px rgb(15, 15, 15);
     border-bottom: solid #0f0f0f;
     background-color: #1778a1;
     width: 100%;
-    border-top-left-radius: 67px;
-    border-top-right-radius: 67px;
-    font-size: calc(0.4em + 0.4vw);
-    line-height: 25px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    font-size: calc(0.5em + 0.2vw);
+
 }
 
 article {
@@ -192,7 +198,9 @@ article {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 70px;
+    border-radius: 20px;
+
+
 
 }
 
@@ -205,21 +213,29 @@ article div {
     display: flex;
     flex-wrap: wrap;
     flex-grow: 1;
-    padding: 10px 40px;
-    height: 60px;
+text-align: center;
     justify-content: center;
 }
 
-article input[type=radio] {
+article input[type=radio],
+input[type=checkbox] {
     display: none;
+}
+
+article input[type=checkbox]+label {
+    background: #2f7992;
+}
+
+article input[type=checkbox]+label:hover {
+    background: #FDC300;
 }
 
 article label {
     text-shadow: 2px 2px 1px rgb(15, 15, 15);
     display: flex;
-
+    position: relative;
     justify-content: center;
-
+    font-size: calc(0.5em + 0.5vw);
     align-items: center;
     background: #36484d;
     height: 50px;
@@ -230,7 +246,8 @@ article label {
 }
 
 article label img {
-    margin-left: 40%;
+    position: absolute;
+    right: 5px;
 
     /* position: relative;
     left: 10%; */
@@ -243,7 +260,7 @@ article label:hover {
 
 article input[type=radio]:checked+label,
 input[type=checkbox]:checked+label {
-    background: #FDC300;
+    background: #fda400;
     box-shadow: 0px 0px 16px 7px rgba(0, 0, 0, 0.75);
 }
 

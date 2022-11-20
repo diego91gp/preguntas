@@ -139,7 +139,7 @@ window.onload = function () {
                 }
                 if (chek.value && !chek.checked) {
                     arr.push({ "tipo": "correcta" });
-                    chek.nextElementSibling.style.backgroundColor = "green";
+                    chek.nextElementSibling.style.backgroundColor = "#4EBF7D";
 
 
                 }
