@@ -1,15 +1,15 @@
 import { test } from "./test.js";
 window.onload = function () {
 
-    let main= document.querySelector(".info");
-    main.parentElement.previousElementSibling.previousElementSibling.firstElementChild.addEventListener("click",principal);
+    let main = document.querySelector(".info");
+    main.parentElement.previousElementSibling.previousElementSibling.firstElementChild.addEventListener("click", principal);
     var nav = document.querySelector("nav");
     var sec = document.querySelector(".cuestionario");
 
     creaNav();
 
-    function principal(){
-        sec.innerHTML="";
+    function principal() {
+        sec.innerHTML = "";
         sec.appendChild(main);
 
     }
@@ -26,7 +26,7 @@ window.onload = function () {
             nav.appendChild(div);
             div.addEventListener("click", opcion);
 
-           
+
 
         }
     }
@@ -43,14 +43,14 @@ window.onload = function () {
         for (const cat of test) {
 
             if (cat.categoria == this.textContent) {
-                
-                
-                    imag.src = `./media/${cat.imagen}`;
+
+
+                imag.src = `./media/${cat.imagen}`;
                 h1.appendChild(imag);
                 for (const [indice, preg] of cat.preguntas.entries()) {
-                    let divh= document.createElement("section");
-                    let imagenTipo= document.createElement("img");
-                    imagenTipo.src=preg.tipo=="simple"? "./media/mascotaUnica.png" : "./media/mascotaMultiple.png" ;
+                    let divh = document.createElement("section");
+                    let imagenTipo = document.createElement("img");
+                    imagenTipo.src = preg.tipo == "simple" ? "./media/mascotaUnica.png" : "./media/mascotaMultiple.png";
                     let artic = document.createElement("article");
                     artic.style.backgroundImage = `url("./media/${cat.fondo}")`;
                     sec.appendChild(artic);
@@ -59,7 +59,7 @@ window.onload = function () {
                     artic.appendChild(divh);
                     divh.appendChild(h3);
                     divh.appendChild(imagenTipo);
-                    
+
                     creaInputs(preg, indice, artic);
 
                 }
@@ -78,7 +78,7 @@ window.onload = function () {
         for (const [indiR, resp] of preg.respuestas.entries()) {
 
             let div = document.createElement("div");
-           
+
             div.classList.add("opcion");
             let input = document.createElement("input");
             input.type = preg.tipo == "simple" ? "radio" : "checkbox";
@@ -106,7 +106,7 @@ window.onload = function () {
             boton.addEventListener("click", compruebaChek);
             boton.textContent = "Comprueba";
             resultados.appendChild(boton);
-           sec.appendChild(resultados);
+            sec.appendChild(resultados);
         }
 
     }
@@ -126,35 +126,28 @@ window.onload = function () {
 
                     chek.nextElementSibling.style.backgroundColor = "#4EBF7D";
                     notaSuma++;
-                    chek.nextElementSibling.innerHTML += `<img src="./media/comprobar.png" width="30px">`;
+                    chek.nextElementSibling.innerHTML += `<img src="./media/mascotaOK.png"  alt="bien">`;
 
-                    // chek.checked.nextElementSibling.style.backgroundColor = "#4EBF7D";   
                 }
                 if (!chek.value && chek.checked) {
                     incorrecta++;
                     arr.push({ "tipo": "incorrecta", "sel": "mal" });
                     notaResta = notaResta + 0.15;
                     chek.nextElementSibling.style.backgroundColor = "#DD401F";
-                    chek.nextElementSibling.innerHTML += `<img src="./media/cancelar.png" width="30px">`;
+                    chek.nextElementSibling.innerHTML += `<img src="./media/mascotaNO.png"  alt="mal">`;
                 }
                 if (chek.value && !chek.checked) {
                     arr.push({ "tipo": "correcta" });
-                    chek.nextElementSibling.style.backgroundColor = "#4EBF7D";
 
-
+                    chek.nextElementSibling.style.backgroundColor = "#FDC300";
+                    chek.nextElementSibling.style.color = "green";
                 }
-
-
             }
-            let y = arr.filter(arr => arr.tipo === 'correcta').length;
-            let x = arr.filter(arr => arr.sel === 'bien').length;
 
-            //a medias
-            //if(arr.every)
-            notaSuma = notaSuma / y;
-            correcta = notaSuma == 1 ? correcta + 1 : correcta + 0;
-            //if(notaSuma==1) correcta++;
-            nota = (nota + notaSuma) - notaResta;
+            notaSuma = arr.filter(arr => arr.sel === 'bien').length / arr.filter(arr => arr.tipo === 'correcta').length;
+            correcta = arr.filter(arr => arr.sel === 'bien').length === 1 ? correcta + 1 : correcta + 0;
+
+            nota = nota + notaSuma - notaResta;
 
         }
         window.scroll(0, 0);
@@ -164,22 +157,45 @@ window.onload = function () {
 
     function pintaNotas(correcta, incorrecta, nota) {
 
+        for (const lab of document.querySelectorAll("input")) {
+            lab.disabled = "true";
+        }
+
         let divresult = document.createElement("div");
-
         divresult.classList.add("resultados");
+        function mueve() {
+            divresult.style.right = "15%";
+            divresult.style.width = "70%";
+            divresult.style.bottom = "calc(50% - 200px)";
+            document.body.querySelector("i").style.display = "inline-block";
 
-        divresult.innerHTML = `<h3>Resultados</h3>
-                               <span> Aciertos = ${correcta} <br>
-                                Fallos = ${incorrecta} <br>
-                                Nota=${nota.toFixed(2)} </span> `;
+        }
 
-        document.querySelector("button").remove();
+        function minimiza() {
+            divresult.style.right = "10px";
+            divresult.style.bottom = "-454px";
+            divresult.style.width = "240px";
+            document.body.querySelector("i").style.display = "none";
+        }
+        //<i class="fa-regular fa-square-arrow-up-left"></i>
+        divresult.innerHTML = `<h3>Resultados <i class="fa-solid fa-minus"></i>
+</h3>
+                               <span> Preguntas acertadas: ${correcta}</span>
+                               <span> Preguntas falladas: ${incorrecta}</span>
+                                <span>Nota final: ${nota.toFixed(2)} </span> `;
 
+        //cambiar el addeventlistener pa q saque los resultados y moverlo de sitio al naV
         if (nota != 10) {
             divresult.innerHTML += `<button>Volver  a intentar</button>`;
         }
 
+        let d = document.querySelector("button");
+        d.removeEventListener("click", compruebaChek);
+        d.textContent = "Mostrar Result";
+        d.addEventListener("click", mueve);
         document.body.insertBefore(divresult, sec);
+        document.body.querySelector("i").addEventListener("click", minimiza);
+
     }
 
     function pintaNav() {

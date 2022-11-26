@@ -1,19 +1,20 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@import url(../css/reset.css);
+
+
 
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Chewy';
     background-color: #90a9b4;
     width: 100%;
     min-width: 400px;
     user-select: none;
+    display: flex;
+    justify-content: center;
+
 }
 
 header div {
@@ -30,7 +31,7 @@ header {
     min-width: 400px;
     width: 100%;
     height: 150px;
-    background-image: url(../media/Sin\ nombre.png);
+    background-image: url(../media/Quiz.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -56,7 +57,10 @@ nav {
 }
 
 .info {
-    font-size: calc(0.7em + 0.4vw);
+    position: relative;
+    padding: 20px;
+    background-color: #25242460;
+    font-size: calc(1em + 0.4vw);
     box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.993);
     backdrop-filter: blur(10px);
     text-align: center;
@@ -64,19 +68,23 @@ nav {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background-image: url(/Trabajos/preguntas/media/interrogantes-variados-como-ejemplo-de-los-tipos-de-preguntas-y-la-efectividad-850x0-c-default.png);
-    background-size: cover;
     border-radius: 10%;
-    width: 60%;
-
+    width: 70%;
     gap: 10px;
+
 }
 
+
+
 #flecha {
-    max-width: 100%;
+    bottom: -30%;
+    position: absolute;
+    max-width: 70%;
 }
 
 .instru {
+    padding: 10%;
+    background-color: #252424a7;
     background-color: #1778a1b4;
     backdrop-filter: blur(15px);
     color: black;
@@ -142,7 +150,7 @@ h1 {
     border-bottom: solid #0f0f0f;
     text-align: center;
     font-family: 'Chewy';
-    -webkit-text-stroke: 1px #20111b;
+    -webkit-text-stroke: 2px #20111b;
     font-size: calc(1.5em + 2vw);
     color: #1778A1;
     text-transform: uppercase;
@@ -150,8 +158,10 @@ h1 {
 }
 
 h3 {
-    font-size: calc(0.8em + 0.9vw);
-    color: #ecd866
+    font-family: 'Chewy';
+    -webkit-text-stroke: 2px #20111b;
+    font-size: calc(1.8em + 0.9vw);
+    color: #ef8031
 }
 
 .cuestionario {
@@ -178,7 +188,6 @@ article section {
     height: 100px;
     align-items: center;
     text-align: center;
-    text-shadow: 2px 2px 1px rgb(15, 15, 15);
     border-bottom: solid #0f0f0f;
     background-color: #1778a1;
     width: 100%;
@@ -213,7 +222,7 @@ article div {
     display: flex;
     flex-wrap: wrap;
     flex-grow: 1;
-text-align: center;
+    text-align: center;
     justify-content: center;
 }
 
@@ -231,7 +240,7 @@ article input[type=checkbox]+label:hover {
 }
 
 article label {
-    text-shadow: 2px 2px 1px rgb(15, 15, 15);
+    -webkit-text-stroke: 0.1px #20111b;
     display: flex;
     position: relative;
     justify-content: center;
@@ -248,12 +257,14 @@ article label {
 article label img {
     position: absolute;
     right: 5px;
+    width: 45px;
 
     /* position: relative;
     left: 10%; */
 }
 
-article label:hover {
+article label:hover,
+button:hover {
     background-color: #FDC300;
 
 }
@@ -270,7 +281,6 @@ button {
     border-radius: 30px;
     background-color: #36484d;
     display: block;
-    margin: 0 auto;
     width: 150px;
     height: 50px;
     margin-bottom: 50px;
@@ -278,38 +288,93 @@ button {
     cursor: pointer;
 }
 
-button:hover {
-    background-color: initial;
-    background-position: 0 0;
-
-    background-color: #FDC300;
-}
-
 button:active {
     opacity: .8;
 }
 
 .resultados {
-    border-radius: 20px;
+
+    border-radius: 10px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: stretch;
+    align-items: flex-end;
     flex-direction: column;
-    gap: 10px;
     text-shadow: 2px 2px 1px rgb(15, 15, 15);
     color: white;
-    width: 50%;
     text-align: center;
-    margin: 0 auto;
-    border: solid black;
-    position: relative;
-    top: 170px;
+    z-index: 2;
+    position: fixed;
+
+    bottom: -454px;
+    right: 10px;
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
     background-image: url(../media/WC268-True-of-False-1.png);
-    background-size: contain;
+    background-size: cover;
+    transition: all 1000ms ease;
+    width: 240px;
+    font-size: 1.2em;
+    height: 500px;
+    gap: 40px;
+    align-items: center;
 
 }
 
+
+
+
 .resultados h3 {
+    background-color: rgb(0, 115, 255);
+    font-family: 'Chewy';
+    -webkit-text-stroke: 2px #20111b;
+    font-size: 49px;
+    color: #17ed26d2;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2%;
+    padding-right: 1%;
     width: 100%;
-    background-color: blue;
+    border-bottom: solid black 5px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+
+
+}
+
+.resultados span {
+    display: flex;
+    font-family: 'Chewy';
+    -webkit-text-stroke: 2px #20111b;
+    font-size: 2em;
+}
+
+.resultados span:nth-child(4) {
+
+
+    color: red;
+}
+
+.resultados i {
+    display: none;
+    cursor: pointer;
+    color: grey;
+    box-shadow: #0f0f0f;
+
+}
+
+.resultados i:hover {
+    color: white;
+
+}
+
+input:disabled+label {
+    pointer-events: none;
+}
+::-webkit-scrollbar {
+    width: 6px!important;
+    height: 6px!important;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: gray;
 }
