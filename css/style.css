@@ -7,7 +7,7 @@ html {
 }
 
 body {
-    font-family: 'Chewy';
+   
     background-color: #90a9b4;
     width: 100%;
     min-width: 400px;
@@ -57,42 +57,50 @@ nav {
 }
 
 .info {
-    position: relative;
+    margin-top: 50px;
     padding: 20px;
     background-color: #25242460;
-    font-size: calc(1em + 0.4vw);
     box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.993);
     backdrop-filter: blur(10px);
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
-    border-radius: 10%;
-    width: 70%;
-    gap: 10px;
+    border-radius: 10px;
+    width: 85%;
+    gap: 5px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
 }
 
-
-
-#flecha {
-    bottom: -30%;
-    position: absolute;
-    max-width: 70%;
+.quizzie{
+    width: 90%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+    font-size: 1.2em;
+    line-height: 1.2em;
 }
+
 
 .instru {
-    padding: 10%;
-    background-color: #252424a7;
-    background-color: #1778a1b4;
-    backdrop-filter: blur(15px);
-    color: black;
+    display:flex;
+    flex-direction: column;
+    padding: 5px;
+    backdrop-filter: blur(5px);
+    color: rgb(255, 255, 255);
     text-align: justify;
-    margin-top: 20px;
-
+   gap:10px;
+    padding: 10px;
     width: 80%;
 
+}
+
+#intrulinea{
+   color: green ;
+   background-color: #FDC300;
+ 
 }
 
 h1 img {
@@ -107,10 +115,22 @@ article section img {
     right: 0px;
     max-width: 20%;
 
-
-
 }
 
+.instru p{
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 55.47px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    background-color:#36484d;
+}
+
+.conimag{
+    padding-right: 50px !important;
+}
 nav div {
     border-radius: 15px;
     position: relative;
@@ -181,11 +201,12 @@ h3 {
 
 
 article section {
-    padding-right: 20%;
+
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     position: relative;
     height: 100px;
+    padding-right: 20%;
     align-items: center;
     text-align: center;
     border-bottom: solid #0f0f0f;
@@ -251,6 +272,7 @@ article label {
     width: 70%;
     cursor: pointer;
     border-radius: 5px;
+    transition: background-color 1s;
 
 }
 
@@ -297,7 +319,7 @@ button:active {
     border-radius: 10px;
     display: flex;
     justify-content: stretch;
-    align-items: flex-end;
+
     flex-direction: column;
     text-shadow: 2px 2px 1px rgb(15, 15, 15);
     color: white;
@@ -305,13 +327,13 @@ button:active {
     z-index: 2;
     position: fixed;
 
-    bottom: -454px;
+
     right: 10px;
     box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
     background-image: url(../media/WC268-True-of-False-1.png);
     background-size: cover;
-    transition: all 1000ms ease;
-    width: 240px;
+    transition: all 500ms ease;
+    width: 255px;
     font-size: 1.2em;
     height: 500px;
     gap: 40px;
@@ -323,14 +345,16 @@ button:active {
 
 
 .resultados h3 {
+    transition: all 500ms ease;
     background-color: rgb(0, 115, 255);
     font-family: 'Chewy';
     -webkit-text-stroke: 2px #20111b;
-    font-size: 49px;
+    font-size: 1.6em;
     color: #17ed26d2;
     text-transform: uppercase;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-around;
     padding-left: 2%;
     padding-right: 1%;
     width: 100%;
@@ -355,11 +379,15 @@ button:active {
 }
 
 .resultados i {
-    display: none;
+
     cursor: pointer;
     color: grey;
-    box-shadow: #0f0f0f;
 
+
+}
+
+#i2 {
+    font-size: 30px;
 }
 
 .resultados i:hover {
@@ -370,9 +398,10 @@ button:active {
 input:disabled+label {
     pointer-events: none;
 }
+
 ::-webkit-scrollbar {
-    width: 6px!important;
-    height: 6px!important;
+    width: 6px !important;
+    height: 6px !important;
 }
 
 ::-webkit-scrollbar-thumb {
