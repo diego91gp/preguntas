@@ -417,12 +417,13 @@ input:disabled+label {
     
 
 #resulquiz {
-    padding-top: 20px;
+    padding-top: 80px;
     background-image: none;
     justify-content: center;
     gap: 5%;
 }
 .resultados {
+   
     background-color: rgba(42, 42, 42, 0.851);
 
 }
@@ -482,6 +483,7 @@ h1{
         font-size: 1.2em;
     }
     #resulquiz {
+        padding-top: 20px;
         justify-content: center;
         align-items: center;
         flex-direction: column;
