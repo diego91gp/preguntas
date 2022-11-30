@@ -5,7 +5,6 @@ window.onload = function () {
     main.parentElement.previousElementSibling.previousElementSibling.firstElementChild.addEventListener("click", principal);
     let nav = document.querySelector("nav");
     let sec = document.querySelector(".cuestionario");
-
     let catActu = {};
 
     creaNav();
@@ -13,8 +12,8 @@ window.onload = function () {
     function principal() {
         pintaNav();
         sec.innerHTML = "";
-        if (document.querySelector(".resultado")) {
-            document.querySelector(".resultado").remove();
+        if (document.querySelector(".resultados")) {
+            document.querySelector(".resultados").remove();
         }
 
         sec.appendChild(main);
@@ -32,9 +31,6 @@ window.onload = function () {
             div.appendChild(imag);
             nav.appendChild(div);
             div.addEventListener("click", () => { opcion(categoria, div) });
-
-
-
         }
     }
     function opcion(cat, divsel) {
@@ -72,7 +68,6 @@ window.onload = function () {
 
         }
         creaBoton();
-
 
     }
     function creaInputs(preg, indice, artic) {
@@ -160,18 +155,21 @@ window.onload = function () {
 
         let divresult = document.createElement("div");
         divresult.classList.add("resultados");
-        divresult.style.bottom = "-463px";
+        divresult.style.bottom = "-452px";
 
         divresult.innerHTML = `<h3><i id="i2" class="fa-solid fa-arrow-up-from-bracket"></i>Resultados<i id="i1" class="fa-solid fa-minus"></i>
         </h3>
-        <span> Preguntas acertadas: ${correcta}</span>
-        <span> Preguntas falladas: ${incorrecta}</span>
-        <span>Nota final: ${nota.toFixed(2)} </span> `;
-
-
-
-        divresult.innerHTML += `<button id="botres">Volver  a intentar</button>`;
-
+        <div id="resulquiz">
+            <img src="./media/mascotamain.png" width="20%" alt="Quizzie">
+            <div>
+                <span> Aciertos: ${correcta}</span>
+                <span> Fallos: ${incorrecta}</span>
+                <span>Nota final</span>
+                <span> ${Number(nota.toFixed(1)).toLocaleString("de-DE")} </span>
+                <button id="botres">Volver  a intentar</button>
+             </div>
+        </div>
+        `;
 
         document.querySelector("button").remove();
         document.body.insertBefore(divresult, sec);
@@ -182,19 +180,21 @@ window.onload = function () {
     }
     function mueve(divresult) {
 
-        if (divresult.style.bottom == "-463px") {
-            divresult.style.right = "15%";
-            divresult.style.width = "70%";
-            divresult.children[0].style.fontSize = "2.2em";
+        if (divresult.style.bottom == "-452px") {
+            divresult.style.right = "25%";
+            divresult.style.width = "50%";
+           
             divresult.children[0].style.justifyContent = "space-between";
             divresult.style.bottom = "calc(50% - 200px)";
             document.body.querySelector("#i1").style.display = "inline-block";
             document.body.querySelector("#i2").style.display = "none";
         } else {
             divresult.style.right = "10px";
-            divresult.style.bottom = "-463px";
-            divresult.style.width = "240px";
-            divresult.children[0].style.fontSize = "1.6em";
+            divresult.style.bottom = "-452px";
+            divresult.style.width = "255px";
+            divresult.style.heigth = "35px";
+            
+            divresult.children[0].style.justifyContent = "space-around";
             document.body.querySelector("#i1").style.display = "none";
             document.body.querySelector("#i2").style.display = "inline-block";
         }
@@ -209,4 +209,6 @@ window.onload = function () {
     }
 
 }
+
+
 
