@@ -1,63 +1,37 @@
 <!DOCTYPE html>
-<html lang="es" id="quiz">
+<html lang="es">
 
 <head>
-    <title>Que Sabes</title>
-    <link href="css/style.css" rel="stylesheet">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="css/stylemain.css" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <script src="https://kit.fontawesome.com/f740c0a1da.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="./recogenombre.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Nabla&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nabla&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-    <script type="module" src="preguntas.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+
 </head>
 
 <body>
 
-    <header>
-        <div></div>
-    </header>
-    <nav></nav>
+    <video autoplay muted loop id="videoFondo">
+        <source src="./media/Azul - 9809.mp4" type="video/mp4">
 
-    <section class="cuestionario">
-        <div class="info">
+    </video>
+    <div class="container">
 
-            <div class="quizzie">
-                <img src="./media/mascotamain.png" width="20%" alt="Quizzie">
 
-                <p>Hola, yo soy Quizzie y soy el emoji mas inteligente del mundo.
-                    <br> ¿Crees que sabes más que yo? <br>
-                    Pongámoslo a prueba con una serie de preguntas sobre varias
-                    categorías, especialmente seleccionadas por mí. <br>
-                    Voy a darte unas instrucciones antes de comenzar.
-                </p>
-            </div>
+        <img src="./media/Quiz.png" width="40%" alt="quiz">
+        <div class="introduccion">
+            <h1>Introduce tu nombre</h1>
+            <input type="text">
+            <a href="./index.html"><i class="fa-solid fa-gamepad"></i></a>
 
-            <div class="instru">
-                <p>&#8226; Cada respuesta seleccionada erronea restará 0.15 puntos.</p>
-                <p>&#8226; Cada pregunta acertada completa sumará 1 punto (si es parcial se calculara el porcentaje).</p>
-                <p>&#8226; Las preguntas con respuesta múltiple te las indicaré así <img width="80px"
-                        src="./media/mascotaMultiple.png" alt=""></p>
-                <p>&#8226; Las preguntas con una única respuesta te las indicaré así<img width="80px"
-                        src="./media/mascotaUnica.png" alt=""></p>
-                <p class="conimag" style="background-color: #4EBF7D">&#8226; Si la respuesta seleccionada es correcta me
-                    pondré contento <img width="45px" src="./media/mascotaOK.png" alt="bien"></p>
-                <p class="conimag" style="background-color: #DD401F">&#8226; Si la respuesta seleccionada es incorrecta
-                    me pondré triste <img width="45px" src="./media/mascotaNO.png" alt="mal"> </p>
-                <p id="intrulinea">&#8226; Si la respuesta correcta no ha sido seleccionada, la marcaré así. </p>
-            </div>
-            <br>
-            <p>Cuando estés listo escoge una categoria de preguntas en el panel izquierdo de la página y comienza a
-                jugar.</p>
-            <p>Mucha Suerte!!</p>
-            
         </div>
-    </section>
+
+
+    </div>
 
 </body>
 

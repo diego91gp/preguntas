@@ -31,6 +31,16 @@ justify-content: center;
     
    
 }
+i{  
+    display:flex;
+    text-align: center;
+    font-size: 2em;
+    color:#ef8031;
+    background-color: #f1f1f1b2;
+    border-radius: 10px;
+    height: 50px;
+    width: 100px;
+}
 
 
 .introduccion{
@@ -43,6 +53,7 @@ justify-content: center;
     width: 80%;
     background-color:rgba(47, 81, 118, 0.812) ;
     height: 500px;
+    max-width: 1200px;
     
 }
 

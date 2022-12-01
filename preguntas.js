@@ -10,6 +10,7 @@ window.onload = function () {
     creaNav();
 
     function principal() {
+        
         pintaNav();
         sec.innerHTML = "";
         if (document.querySelector(".resultados")) {
@@ -34,6 +35,7 @@ window.onload = function () {
         }
     }
     function opcion(cat, divsel) {
+        document.querySelector(".fondo").classList.replace(".fondo",".fondo2");
         catActu = cat;
         if (divsel) {
             pintaNav();
@@ -172,7 +174,7 @@ window.onload = function () {
         `;
 
         document.querySelector("button").remove();
-        document.body.insertBefore(divresult, sec);
+        document.querySelector(".fondo").appendChild(divresult);
         document.querySelector("#botres").addEventListener("click", () => { opcion(catActu) });
         divresult.querySelector("#i1").style.display = "none";
         divresult.querySelector("#i1").addEventListener("click", () => { mueve(divresult) });
