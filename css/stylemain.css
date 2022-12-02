@@ -1,5 +1,5 @@
 @import url(../css/reset.css);
-
+/*min width para que no disminuya mas dfe 400 y tamaño 100vh para que el video ocupe todo lo que se ve*/
 body {
   background-color: gray;
   height: 100vh;
@@ -8,7 +8,7 @@ body {
   justify-content: center;
   min-width: 400px;
 }
-
+/*El video de fondo fixed , que ocupe toda la pagina y z index -1 para que quede de fondo*/
 #videoFondo {
   position: fixed;
   right: 0;
@@ -32,7 +32,6 @@ body {
 }
 
 i {
-  
   box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.993);
   padding-top: 5px;
   display: flex;
@@ -51,8 +50,9 @@ i:hover {
   background-color: #e09320d4;
 }
 
+/*la animacion es una foto que gira, tiene 8 segundos de animacion pero el tiempo que tarda
+en pasar a otra pagina son 3 segundos, simplem,ente para que gire siempre hasta que cambie de pagina*/
 #rotar {
-
   display: flex;
   justify-content: center;
   background-color: transparent;
@@ -61,13 +61,8 @@ i:hover {
 }
 
 @keyframes carga {
-  0% {
-    rotate: 0;
-  }
-
-  100% {
-    rotate: 800deg;
-  }
+  0% { rotate: 0; }
+  100% {rotate: 800deg;}
 }
 
 
@@ -94,7 +89,7 @@ select {
   border-radius: 4px;
 
 }
-
+/*un poco que centre el texto del menu de selecciona dificultad*/
 option {
   font-size: large;
   text-align: center;
@@ -109,7 +104,7 @@ h1 {
   text-align: center;
   -webkit-text-stroke: 2px #000000;
 }
-
+/*media queryes a 990px*/
 @media(max-width:990px) {
   img {
     width: 100%;

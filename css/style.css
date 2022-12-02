@@ -1,5 +1,5 @@
 @import url(../css/reset.css);
-
+/*declaro las variables que mas voy a usar*/
 :root{
     --letracartoon:'Chewy';
     --letramain: 'Roboto', sans-serif;
@@ -8,6 +8,8 @@
 html {
     scroll-behavior: smooth;
 }
+/*el video lo mismo que en el main, pasa que esta vez en vez de autoplay
+lo tengo en paused para que no se mueva y distraiga de el test*/
 #videoFondo {
     position: fixed;
     right: 0;
@@ -16,13 +18,20 @@ html {
     min-height: 100%;
     z-index: -1;
   }
+/*fondo lo que te comentaba en el video, hay 2 opciones, cunado estas en las instrucciones
+y cuando estas viendo las respuestas , solo cambia el minheig*/
 .fondo{
     min-width: 100%;
     min-height: 100vh;
-    background: rgba(79, 80, 85, 0.552);
-    
+    background: rgba(79, 80, 85, 0.552);  
 }
 
+.fondo2{
+    min-width: 100%;
+    min-height: 100%;
+    background: rgba(79, 80, 85, 0.552);    
+}
+/*el icono de home */
 a{      
     font-size: 3em;
     -webkit-text-stroke: 2px #20111b;
@@ -35,38 +44,24 @@ a{
     width: 80px;
     height: 80px;
     color:white;
-  
 }
 
-a:hover{
-    color:#FDC300;
-}
-.fondo2{
-    min-width: 100%;
-    min-height: 100%;
-    background: rgba(79, 80, 85, 0.552);
-    
-}
-
+/*user selected none para que no se pueda seleccionar el texto*/
 body {
-   
-  
     background-color: #668c9a;
     width: 100%;
     min-width: 460px;
     user-select: none;
     display: flex;
-   
-
 }
-
+/*un div que tengo justo encima de la foto de quizz para usarlo como boton para volver a las instrucciones*/
 header div {
     width: 500px;
     height: 150px;
     cursor: pointer;
 }
 
-
+/*header fixed con blur para que siempre se quede arriba zindex 1 para que quede por encima del video*/
 header {
     display: flex;
     justify-content: center;
@@ -82,8 +77,9 @@ header {
     backdrop-filter: blur(9px);
     z-index: 1;
 }
-
+/*vav fixed colocado a la izquierda en columna*/
 nav {
+    /*esta propiedad la encontre para darle borde a las letras*/
     -webkit-text-stroke: 2px #20111b;
     display: flex;
     flex-direction: column;
@@ -95,11 +91,10 @@ nav {
     gap: 30px;
     z-index: 1;
 }
-
+/*el estidlo de la pantalla de las instrucciones*/
 .info {
     margin-top: 0px;
     padding: 10px;
-    
     background-color: #25242460;
     box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.993);
     backdrop-filter: blur(10px);
@@ -110,27 +105,25 @@ nav {
     align-items: center;
     border-radius: 10px;
     width: 85%;
-    
     gap: 5px;
     font-family: var(--letramain);
 
 }
-
+/*el bloque de dentro de las instrucciones*/
 .quizzie {
     width: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: start;
-   
     line-height: 1.2em;
     padding: 0 25px 0 25px;
     gap: 5px;
 }
+/*la foto de dentro de las instrucciones*/
 .quizzie  img{
 width: 200px;
 }
-
 
 .instru {
     display: flex;
@@ -143,7 +136,7 @@ width: 200px;
     padding: 5px;
     width: 80%;
 }
-
+/*el estilo de la lines para darla como ejemplo de como seria resuelta de las instrucciones*/
 #intrulinea {
     border:green 2px solid;
     color: green;
@@ -155,7 +148,7 @@ h1 img {
     width: 10%;
     margin-left: 2%;
 }
-
+/*para colocar la foto del muñeco que te ayuda a saber si es multiple o solo una respuesta*/
 article section img {
     position: absolute;
     right: 0px;
@@ -173,11 +166,12 @@ article section img {
     border-radius: 5px;
     background-color: #36484d;
 }
-
+/*paddin para la foto de las instrucciones , le puse important porque al tratarla desde js no me sobreescribia
+con ese comando me hace caso*/
 .conimag {
     padding-right: 50px !important;
 }
-
+/*el nav de las categorias con sui hover con transicion al poner el raton encima*/
 nav div {
     border-radius: 15px;
     position: relative;
@@ -201,14 +195,14 @@ nav div:hover {
     left: 120px;
 }
 
-
 nav img {
     margin-left: 5px;
     text-align: center;
     width: 35%;
 
 }
-
+/*el estilo de los h1 y h3 , he probado en font size  calc con tamaño para que mengue a la vez que la pagina
+pero no me convenve del todo, por lo menos esa formula*/
 h1 {
     align-items: center;
     display: flex;
@@ -232,12 +226,12 @@ h3 {
     color: #ef8031;
 }
 
+/*la zona de las preguntas del cuestionario*/
 .cuestionario {
     margin: 0 auto;
     color: #e7ebec;
     margin-top: 200px;
     width: 80%;
-    
     display: flex;
     justify-content: center;
     align-items: center;
@@ -287,7 +281,7 @@ article div {
     text-align: center;
     justify-content: center;
 }
-
+/*los input desactivados*/
 article input[type=radio],
 input[type=checkbox] {
     display: none;
@@ -296,11 +290,12 @@ input[type=checkbox] {
 article input[type=checkbox]+label {
     background: #2f7992;
 }
-
-article input[type=checkbox]+label:hover {
-    background: #FDC300;
+/*cuando esta disabled el input, el label no tiene eventos de raton*/
+input:disabled+label {
+    pointer-events: none;
 }
 
+/*los label de cada repsuesta*/
 article label {
     font-family: var(--letramain);
     -webkit-text-stroke: 0.1px #20111b;
@@ -316,25 +311,28 @@ article label {
     border-radius: 5px;
     transition: all 0.5s;
 }
-
+/*para colocal el muñeco dedo arriba o abajo cuando corrige*/
 article label img {
     position: absolute;
     right: 5px;
     width: 45px;
 }
-
+/*todos los hover practicamente*/
 article label:hover,
-button:hover {
+button:hover ,article input[type=checkbox]+label:hover {
     background-color: #FDC300;
 
 }
-
+a:hover{
+    color: #FDC300;
+}
+/*estilod e los label cheked*/
 article input[type=radio]:checked+label,
 input[type=checkbox]:checked+label {
     background: #fda400;
     box-shadow: 0px 0px 16px 7px rgba(0, 0, 0, 0.75);
 }
-
+/*el boton del final*/
 button {
     color: white;
     font-size: 1em;
@@ -346,11 +344,14 @@ button {
     margin-bottom: 50px;
     cursor: pointer;
 }
-
+/*un efecto al apretar*/
 button:active {
     opacity: .8;
 }
-
+/*algunas propiedades de la ventana resultados
+muchas otras como la posicion top la manejo desde js dependiendod e dodne este,
+tiene transicion para hacer el efecto de minimizar y maximizar z index 2 porque ya tengo 1 las respuestas y fixed para que siempre este
+cuando navego por la pagina*/
 .resultados {
     border-radius: 10px;
     display: flex;
@@ -371,7 +372,9 @@ button:active {
     align-items: center;
     backdrop-filter: blur(9px);
 }
-
+/*la foto de la pizarra en la correccion para que cuadre detras de el texto
+aqui me complique mucho la vida porque al hacerlo mas pequeño me descuadraba, asique en los 
+siguientes mediaquerys la quité*/
 #resulquiz {
     padding-top: 20px;
     background-image: url(../media/pizarra2.png);
@@ -387,7 +390,7 @@ button:active {
     flex-direction: row;
     gap: 10%;
 }
-
+/*para que el muñequito des resultados cuadre bien*/
 .resultados img {
     position: relative;
     top: 80px;
@@ -408,7 +411,8 @@ button:active {
     font-size: 0.8em;
   margin-left: 20%;
 }
-
+/*doi bastante formato al h3 de resultados porque tiene unos i que van a aparecer y desaparecer en funcion
+de donde este la ventana, este h3 tambien se modifica desde js*/
 .resultados h3 {
     transition: all 500ms ease;
     background-color: #1778a1;
@@ -433,6 +437,7 @@ button:active {
     -webkit-text-stroke: 2px #20111b;
     font-size: 2em;
 }
+/*para subrallar el 3er span de resultados que es "NOTA"*/
 .resultados span:nth-child(3){
     text-decoration: underline white;
 }
@@ -441,7 +446,7 @@ button:active {
     cursor: pointer;
     color: grey;
 }
-
+/*para hacer mas grande un icono*/
 #i2 {
     font-size: 30px;
 }
@@ -450,10 +455,7 @@ button:active {
     color: white;
 }
 
-input:disabled+label {
-    pointer-events: none;
-}
-
+/*quei ya los mediaqueryes*/
 @media (max-width: 1250px){
     .info {
         font-size: 1.1em;
@@ -467,45 +469,46 @@ input:disabled+label {
     }
 
     
-
-#resulquiz {
+/*aqui ya quito la pizarra de fondo que me daba problemas*/
+    #resulquiz {
     padding-top: 80px;
     background-image: none;
     justify-content: center;
     gap: 5%;
-}
-.resultados {
+    }
+    .resultados {
    
     background-color: rgba(42, 42, 42, 0.851);
 
-}
-.resultados span {
+    }
+    .resultados span {
     font-size: 1.6em;
-}
-.resultados button {
+    }
+    .resultados button {
     margin-left: 0;
-  }
+    }
 
-  .resultados img {
+    .resultados img {
     position:inherit;
     width: 150px;
     height: 150px;
-}
+    }
 
 }
 @media (max-width: 900px){
     .info {
         font-size: 0.8em;
     }
-nav div:hover {
+    /*important porque no me hacia caso*/
+    nav div:hover {
     left: 0;
     background-color: #ef8031 !important;
-}
-}
+    }
+    }
 @media (max-width: 718px){
-h1{
-    width: 70%;
-}
+    h1{
+        width: 70%;
+    }
     .cuestionario{
         width: 100%;
     }
@@ -513,9 +516,7 @@ h1{
         width: 100px;
     }
     .quizzie {
-       
         font-size: 1em;
-       
     }
     
     .instru {
@@ -534,6 +535,7 @@ h1{
     .resultados span {
         font-size: 1.2em;
     }
+    /*paso el texto de info a column para que entre mejor*/
     #resulquiz {
         padding-top: 20px;
         justify-content: center;
