@@ -1,8 +1,9 @@
 import { test } from "./test.js";
+
 window.onload = function () {
 
     let main = document.querySelector(".info");
-    main.parentElement.previousElementSibling.previousElementSibling.firstElementChild.addEventListener("click", principal);
+    document.querySelector("#inicio").addEventListener("click", principal);
     let nav = document.querySelector("nav");
     let sec = document.querySelector(".cuestionario");
     let catActu = {};
@@ -65,7 +66,6 @@ window.onload = function () {
             artic.appendChild(divh);
             divh.appendChild(h3);
             divh.appendChild(imagenTipo);
-
             creaInputs(preg, indice, artic);
 
         }
@@ -101,7 +101,7 @@ window.onload = function () {
             boton.setAttribute("id", "bot")
             let resultados = document.createElement("div");
             boton.addEventListener("click", compruebaChek);
-            boton.textContent = "Comprueba";
+            boton.textContent = "Corregir";
             resultados.appendChild(boton);
             sec.appendChild(resultados);
         }
@@ -135,6 +135,7 @@ window.onload = function () {
 
                     chek.nextElementSibling.style.backgroundColor = "#FDC300";
                     chek.nextElementSibling.style.color = "green";
+                    chek.nextElementSibling.style.border="solid 2px green";
                 }
             }
 

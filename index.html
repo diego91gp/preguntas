@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <link href="css/stylemain.css" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/f740c0a1da.js" crossorigin="anonymous"></script>
-    <script src="./recogenombre.js"></script>
+    <script type="module" src="./recogenombre.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Nabla&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
@@ -22,16 +23,37 @@
     <div class="container">
 
 
-        <img src="./media/Quiz.png" width="40%" alt="quiz">
+        <img src="./media/Quiz.png"  alt="quiz">
         <div class="introduccion">
-            <h1>Introduce tu nombre</h1>
-            <input type="text">
-            <a href="./index.html"><i class="fa-solid fa-gamepad"></i></a>
+            <h1>Selecciona una dificultad para los Test</h1>
+            <form>
+                <select >
+                <option >Selecciona Dificultad </option>
+                <option >Facil</option>
+                <option >Dificil</option>
+                <option >Einstein</option>
+                </select>
+              </form>
+            <div id="enlace"><i class="fa-solid fa-gamepad"></i></div>
 
         </div>
 
 
     </div>
+    <script>
+        let url = document.getElementById('enlace');
+        
+        url.addEventListener('click', ()=>{setTimeout(() =>{ window.location.href = "./preguntas.html";}, 3000);
+    });
+    url.addEventListener('click', cambia);
+    function cambia(){
+            url.previousElementSibling.previousElementSibling.remove();
+            url.previousElementSibling.remove();
+            url.parentElement.style.backgroundColor="transparent";
+            url.parentElement.style.boxShadow="none";
+            url.innerHTML=`<img  id ="rotar" src="./media/pngw.png">`;
+        }
+    </script>
 
 </body>
 

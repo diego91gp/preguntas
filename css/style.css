@@ -1,5 +1,10 @@
 @import url(../css/reset.css);
 
+:root{
+    --letracartoon:'Chewy';
+    --letramain: 'Roboto', sans-serif;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -16,6 +21,25 @@ html {
     min-height: 100vh;
     background: rgba(79, 80, 85, 0.552);
     
+}
+
+a{      
+    font-size: 3em;
+    -webkit-text-stroke: 2px #20111b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:absolute;
+    top:20px;
+    left:0;
+    width: 80px;
+    height: 80px;
+    color:white;
+  
+}
+
+a:hover{
+    color:#FDC300;
 }
 .fondo2{
     min-width: 100%;
@@ -65,7 +89,7 @@ nav {
     flex-direction: column;
     position: fixed;
     top: 150px;
-    font-family: 'Chewy';
+    font-family: var(--letracartoon);
     left: -150px;
     justify-content: center;
     gap: 30px;
@@ -88,7 +112,7 @@ nav {
     width: 85%;
     
     gap: 5px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: var(--letramain);
 
 }
 
@@ -121,6 +145,7 @@ width: 200px;
 }
 
 #intrulinea {
+    border:green 2px solid;
     color: green;
     background-color: #FDC300;
 
@@ -192,7 +217,7 @@ h1 {
     width: 90%;
     border-bottom: solid #0f0f0f;
     text-align: center;
-    font-family: 'Chewy';
+    font-family:  var(--letracartoon);
     -webkit-text-stroke: 2px #20111b;
     font-size: calc(1.5em + 2vw);
     color: #1778A1;
@@ -201,7 +226,7 @@ h1 {
 
 h3 {
     padding-left: 10px;
-    font-family: 'Chewy';
+    font-family: var(--letracartoon);
     -webkit-text-stroke: 2px #20111b;
     font-size: calc(1.8em + 0.9vw);
     color: #ef8031;
@@ -277,7 +302,7 @@ article input[type=checkbox]+label:hover {
 }
 
 article label {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: var(--letramain);
     -webkit-text-stroke: 0.1px #20111b;
     display: flex;
     position: relative;
@@ -312,11 +337,12 @@ input[type=checkbox]:checked+label {
 
 button {
     color: white;
+    font-size: 1em;
     border-radius: 30px;
     background-color: #36484d;
     display: block;
     width: 150px;
-    height: 50px;
+    height: 80px;
     margin-bottom: 50px;
     cursor: pointer;
 }
@@ -337,7 +363,7 @@ button:active {
     position: fixed;
     right: 10px;
     box-shadow: 0px 0px 5px 3px rgba(0,0,0,0.75);
-    background-color: rgba(220, 215, 215, 0.851);
+    background-color: rgba(42, 42, 42, 0.851);
     transition: all 500ms ease;
     width: 255px;
     font-size: 1.2em;
@@ -378,13 +404,15 @@ button:active {
 }
 
 .resultados button {
+    height: 50px;
+    font-size: 0.8em;
   margin-left: 20%;
 }
 
 .resultados h3 {
     transition: all 500ms ease;
     background-color: #1778a1;
-    font-family: 'Chewy';
+    font-family: var(--letracartoon);
     -webkit-text-stroke: 2px #20111b;
     font-size: 1.6em;
     text-transform: uppercase;
@@ -401,7 +429,7 @@ button:active {
 }
 
 .resultados span {
-    font-family: 'Chewy';
+    font-family: var(--letracartoon);
     -webkit-text-stroke: 2px #20111b;
     font-size: 2em;
 }
